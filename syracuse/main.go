@@ -13,7 +13,7 @@ func main() {
 
 	num := *flagNum
 
-	// Stop exercise if number 4 is reached
+	// Stop exercise if number 1 is reached
 	limit := 1
 
 	fmt.Println("Starting loop")
