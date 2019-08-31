@@ -14,7 +14,7 @@ func main() {
 	num := *flagNum
 
 	// Stop exercise if number 4 is reached
-	limit := 4
+	limit := 1
 
 	fmt.Println("Starting loop")
 	for {
