@@ -1,26 +1,37 @@
 package main
 
-import "fmt"
+import (
+	"flag"
+	"fmt"
+)
 
 func main() {
 	sum := 0
-	num := 0
+
+	flagNum := flag.Int("number", 42, "your starting number")
+	flag.Parse()
+
+	num := *flagNum
+
+	// Stop exercise if number 4 is reached
+	limit := 4
 
 	fmt.Println("Starting loop")
 	for {
 		sum++
 		// init
-		if num == 0 {
-			num = 13
-		}
 		isEven := evenNumber(num)
 		fmt.Printf("turn %v, number is %v\n", sum, num)
 
 		if isEven == true {
 			num = even(num)
+			if num == limit {
+				fmt.Printf("Ending here with final value %v, after %v turns\n", num, sum)
+				break
+			}
 		} else if isEven == false {
 			num = nEven(num)
-			if num == 4 {
+			if num == limit {
 				fmt.Printf("Ending here with final value %v, after %v turns\n", num, sum)
 				break
 			}
@@ -39,13 +50,13 @@ func evenNumber(n int) bool {
 // Even number
 func even(n int) int {
 	res := n / 2
-	fmt.Printf("%v is new value\n", res)
+	//fmt.Printf("%v is new value\n", res)
 	return res
 }
 
 // Not even number
 func nEven(n int) int {
 	res := n*3 + 1
-	fmt.Printf("%v is new value\n", res)
+	//fmt.Printf("%v is new value\n", res)
 	return res
 }
